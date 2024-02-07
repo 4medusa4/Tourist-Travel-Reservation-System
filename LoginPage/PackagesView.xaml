@@ -1,0 +1,36 @@
+﻿<UserControl x:Class="LoginPage.PackagesView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:LoginPage"
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             mc:Ignorable="d" Background="White" x:Name="uc_packageDetails">
+
+           <Grid x:Name="grid_viewPackage"
+          HorizontalAlignment="Center" 
+          VerticalAlignment="Top" Width="1860" Height="1000" Background="Transparent">
+
+        <TextBlock  x:Name="table_name" 
+                HorizontalAlignment="Left" 
+                TextWrapping="Wrap" 
+                VerticalAlignment="Top" 
+                Height="40" Width="1859" 
+                FontSize="20" 
+                FontWeight="Bold" 
+                TextDecorations="Underline" 
+                Foreground="LightGray"
+                TextAlignment="Center" 
+                Background="#FF2D2D30">Name</TextBlock>
+
+        <DataGrid x:Name="data_packageDetails"
+                  Style="{StaticResource MaterialDesignDataGrid}"
+                  Margin="0,50,0,0"
+                  AutoGenerateColumns="False"
+                  HorizontalScrollBarVisibility="Auto"
+                  HorizontalContentAlignment="Center"
+                  ColumnHeaderStyle="{StaticResource MaterialDesignDataGridColumnHeader}"
+                  />
+
+    </Grid>
+</UserControl>

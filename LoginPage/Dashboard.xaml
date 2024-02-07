@@ -1,0 +1,365 @@
+﻿<Window x:Class="LoginPage.Dashboard"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        xmlns:local="clr-namespace:LoginPage"
+        mc:Ignorable="d"
+        Title="Dashboard"
+        WindowStartupLocation="CenterScreen" Background="White"
+        WindowStyle="None" 
+        WindowState="Maximized" 
+        MouseDown="Window_MouseDown" 
+        Width="{DynamicResource {x:Static SystemParameters.MaximizedPrimaryScreenWidthKey}}"
+        Height="{DynamicResource {x:Static SystemParameters.MaximizedPrimaryScreenHeightKey}}"
+        materialDesign:ScrollBarAssist.ThumbWidth="800" 
+        Grid.IsSharedSizeScope="{DynamicResource {x:Static SystemParameters.IsRemotelyControlledKey}}"
+        ResizeMode="CanResize"
+        MinHeight="450" MinWidth="800">
+
+
+    <Grid MinHeight="450" MinWidth="800">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="60px"/>
+            <ColumnDefinition Width="170px"/>
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="40"/>
+            <RowDefinition />
+        </Grid.RowDefinitions>
+
+        <Grid x:Name="top" 
+              VerticalAlignment="Top" 
+              Height="40" 
+              Background="#FF2D2D30" 
+              OpacityMask="Black"
+              Grid.Column="1"
+              Grid.ColumnSpan="2"
+              Grid.Row="0"
+              >
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="20*"/>
+                <ColumnDefinition Width="30"/>
+                <ColumnDefinition Width="30"/>
+                <ColumnDefinition Width="30"/>
+            </Grid.ColumnDefinitions>
+
+            <Button x:Name="btn_min" 
+                    HorizontalAlignment="Center" 
+                    VerticalAlignment="Center" 
+                    Background="Transparent" 
+                    BorderBrush="Transparent" 
+                    Click="btn_min_Click" 
+                    MouseEnter="btn_min_MouseEnter" 
+                    MouseLeave="btn_min_MouseLeave"
+                    Grid.Column="1"
+                    Width="30" Height="30" 
+                    Padding="0"
+                    >
+                <materialDesign:PackIcon HorizontalAlignment="Center" 
+                                         Kind="WindowMinimize" 
+                                         Width="15" Height="15" 
+                                         Foreground="White"/>
+            </Button>
+
+            <Button x:Name="btn_max" 
+                    HorizontalAlignment="Center" 
+                    VerticalAlignment="Center" 
+                    Background="Transparent" 
+                    BorderBrush="Transparent" 
+                    Click="btn_max_Click" 
+                    MouseEnter="btn_max_MouseEnter" 
+                    MouseLeave="btn_max_MouseLeave"
+                    Grid.Column="2"
+                    Width="30" Height="30" 
+                    Padding="0"
+                    >
+                <materialDesign:PackIcon HorizontalAlignment="Center" 
+                                         Kind="WindowMaximize" 
+                                         Width="15" Height="15" 
+                                         Foreground="White"/>
+            </Button>
+
+            <Button x:Name="btn_close"  
+                    HorizontalAlignment="Center" 
+                    Margin="0,0,0,0" 
+                    VerticalAlignment="Center" 
+                    Background="Transparent" 
+                    BorderBrush="Transparent" 
+                    Click="btn_close_Click" 
+                    MouseEnter="btn_close_MouseEnter" 
+                    MouseLeave="btn_close_MouseLeave"
+                    Grid.Column="3"
+                    Width="30" Height="30" 
+                    Padding="0"
+                    >
+                <materialDesign:PackIcon HorizontalAlignment="Center" 
+                                         Kind="WindowClose"  
+                                         Width="15" Height="15" 
+                                         Foreground="White"/>
+            </Button>
+
+        </Grid>
+        <Grid x:Name="nav_pnl" 
+              HorizontalAlignment="Left" 
+              Width="60"
+              Grid.Column="0"
+              Grid.ColumnSpan="2"
+              Grid.Row="0"
+              Grid.RowSpan="2" Panel.ZIndex="5"
+              >
+            <StackPanel x:Name="st_pnl" 
+                        Width="230" 
+                        Orientation="Vertical" 
+                        HorizontalAlignment="Left" 
+                        Background="#FF2D2D30">
+                <Grid  Height="60">
+                    <TextBlock Grid.Row="1" 
+                               Text="MENU" 
+                               Margin="70 0 0 0" 
+                               Foreground="White" 
+                               VerticalAlignment="Center" 
+                               FontSize="25"/>
+                    <ToggleButton x:Name="tg_btn" HorizontalAlignment="Left" 
+                                  Width="60" 
+                                  Background="Transparent" 
+                                  BorderBrush="Transparent" 
+                                  Margin="0,0,0,10" 
+                                  IsChecked="True"
+                                  Style="{StaticResource MaterialDesignRaisedButton}" 
+                                  Checked="ToggleButton_Checked" 
+                                  Unchecked="ToggleButton_Unchecked">
+                        <ToggleButton.Triggers>
+                            <EventTrigger RoutedEvent="ToggleButton.Unchecked">
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <DoubleAnimation
+                                            Storyboard.TargetName="nav_pnl" 
+                                            Storyboard.TargetProperty="Width" 
+                                            BeginTime="0:0:0" 
+                                            From="60" To="200" 
+                                            Duration="0:0:0.3"/>
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </EventTrigger>
+                            <EventTrigger RoutedEvent="ToggleButton.Checked">
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <DoubleAnimation Storyboard.TargetName="nav_pnl" 
+                                                         Storyboard.TargetProperty="Width" 
+                                                         BeginTime="0:0:0" 
+                                                         From="230" To="60" 
+                                                         Duration="0:0:0.3"/>
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </EventTrigger>
+                        </ToggleButton.Triggers>
+                        <materialDesign:PackIcon Kind="Menu" 
+                                                 Width="30" Height="30" 
+                                                 Foreground="White"/>
+                    </ToggleButton>
+                </Grid>
+
+
+                <ListView x:Name="lv"  ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+                    <ListViewItem x:Name="lv_dashboard" 
+                                  HorizontalAlignment="Left" 
+                                  Cursor="Hand" MouseEnter="lv_dashboard_MouseEnter" MouseLeave="lv_dashboard_MouseLeave" Selected="lv_dashboard_Selected" >
+                        <StackPanel Orientation="Vertical" 
+                                    HorizontalAlignment="Left" 
+                                    Height="40" Width="230" 
+                                    Margin="0 0 0 0" 
+                                    ToolTip="Dashboard">
+                            <materialDesign:PackIcon Kind="ViewDashboard" 
+                                                     Foreground="White" 
+                                                     Width="30" Height="39" 
+                                                     HorizontalAlignment="Left" 
+                                                     VerticalAlignment="Center"  
+                                                     Margin="8 0 0 0"/>
+                            <TextBlock HorizontalAlignment="left" 
+                                       VerticalAlignment="Center" 
+                                       Text="Dashboard" 
+                                       Background="Transparent" 
+                                       Foreground="White" 
+                                       FontSize="15" 
+                                       Cursor="Hand" 
+                                       Margin="80 -40 0 0"/>
+                        </StackPanel>
+                    </ListViewItem>
+
+                    <ListViewItem x:Name="lv_home" 
+                                  HorizontalAlignment="Left" 
+                                  Cursor="Hand" 
+                                  Selected="lv_home_Selected" MouseEnter="lv_home_MouseEnter" MouseLeave="lv_home_MouseLeave">
+                        <StackPanel Orientation="Vertical" 
+                                    HorizontalAlignment="Left" 
+                                    Height="40" Width="230" 
+                                    Margin="0 0 0 0" 
+                                    ToolTip="Home">
+                            <materialDesign:PackIcon Kind="Home" 
+                                                     Foreground="White" 
+                                                     Width="30" Height="39"
+                                                     HorizontalAlignment="Left" 
+                                                     VerticalAlignment="Center"  
+                                                     Margin="8 0 0 0"/>
+                            <TextBlock HorizontalAlignment="left" 
+                                       VerticalAlignment="Center" 
+                                       Text="Home" 
+                                       Background="Transparent" 
+                                       Foreground="White" 
+                                       FontSize="15" 
+                                       Margin="80 -40 0 0"/>
+                        </StackPanel>
+                    </ListViewItem>
+
+                    <ListViewItem x:Name="lv_gmail" 
+                                  HorizontalAlignment="Left" 
+                                  Cursor="Hand" MouseEnter="lv_gmail_MouseEnter" MouseLeave="lv_gmail_MouseLeave">
+                        <StackPanel Orientation="Vertical" 
+                                    HorizontalAlignment="Left"
+                                    Height="40" Width="230" 
+                                    Margin="0 0 0 0" 
+                                    ToolTip="Gmail">
+                            <materialDesign:PackIcon Kind="Gmail" 
+                                                     Foreground="White" 
+                                                     Width="30" Height="39" 
+                                                     HorizontalAlignment="Left" 
+                                                     VerticalAlignment="Center"  
+                                                     Margin="8 0 0 0"/>
+                            <TextBlock HorizontalAlignment="left" 
+                                       VerticalAlignment="Center" 
+                                       Text="Gmail" 
+                                       Background="Transparent" 
+                                       Foreground="White" 
+                                       FontSize="15" 
+                                       Margin="80 -40 0 0"/>
+                        </StackPanel>
+                    </ListViewItem>
+
+                    <ListViewItem x:Name="lv_account" 
+                                  HorizontalAlignment="Left" 
+                                  Cursor="Hand" MouseEnter="lv_account_MouseEnter" MouseLeave="lv_account_MouseLeave">
+                        <StackPanel Orientation="Vertical" 
+                                    HorizontalAlignment="Left" 
+                                    Height="40" Width="230" 
+                                    Margin="0 0 0 0" 
+                                    ToolTip="Account">
+                            <materialDesign:PackIcon Kind="Account" 
+                                                     Foreground="White" 
+                                                     Width="30" Height="39" 
+                                                     HorizontalAlignment="Left" 
+                                                     VerticalAlignment="Center"  
+                                                     Margin="8 0 0 0"/>
+                            <TextBlock HorizontalAlignment="left" 
+                                       VerticalAlignment="Center" 
+                                       Text="Account" 
+                                       Background="Transparent"
+                                       Foreground="White" 
+                                       FontSize="15" 
+                                       Margin="80 -40 0 0"/>
+                        </StackPanel>
+                    </ListViewItem>
+
+                    <ListViewItem x:Name="lv_logout" 
+                                  HorizontalAlignment="Left" 
+                                  Cursor="Hand" Selected="lv_logout_Selected" MouseEnter="lv_logout_MouseEnter" MouseLeave="lv_logout_MouseLeave">
+                        <StackPanel Orientation="Vertical" 
+                                    HorizontalAlignment="Left" 
+                                    Height="40" Width="230" 
+                                    Margin="0 0 0 0" 
+                                    ToolTip="Logout">
+                            <materialDesign:PackIcon Kind="Logout" 
+                                                     Foreground="White" 
+                                                     Width="30" Height="39"
+                                                     HorizontalAlignment="Left" 
+                                                     VerticalAlignment="Center" 
+                                                     Margin="8 0 0 0"/>
+                            <TextBlock HorizontalAlignment="left" 
+                                       VerticalAlignment="Center" 
+                                       Text="Logout" 
+                                       Background="Transparent"
+                                       Foreground="White" 
+                                       FontSize="15" 
+                                       Margin="80 -40 0 0"/>
+                        </StackPanel>
+                    </ListViewItem>
+
+                </ListView>
+            </StackPanel>
+        </Grid>
+
+        <ScrollViewer Grid.ColumnSpan="2" 
+                      Grid.RowSpan="2" 
+                      Margin="0,40,0,0" 
+                      Grid.Column="1" 
+                      HorizontalScrollBarVisibility="Visible" 
+                      Background="#FFFBFBFB">
+            <Grid x:Name="page_loader"
+                Grid.Column="1" 
+                PreviewMouseLeftButtonDown="page_loader_PreviewMouseLeftButtonDown"
+                MinHeight="450" 
+                MinWidth="800"
+                Grid.ColumnSpan="2" 
+                Grid.Row="1">
+
+                <Calendar HorizontalAlignment="Right"  
+                          VerticalAlignment="Bottom" 
+                          materialDesign:CalendarAssist.Orientation="Vertical" 
+                          CalendarButtonStyle="{StaticResource MaterialDesignCalendarButton}"
+                          CalendarDayButtonStyle="{StaticResource MaterialDesignCalendarDayButton}"
+                          CalendarItemStyle="{StaticResource MaterialDesignCalendarItemPortrait}"
+                          />
+                <materialDesign:Card 
+                                     Margin="0,604,1256,135"
+                                     Background="White"
+                                     materialDesign:ShadowAssist.Darken="True"
+                                     UniformCornerRadius="10">
+                    <Grid>
+
+
+                        <TextBlock Text="Send package references" 
+                           Height="50" 
+                           Margin="45,10,50,140" FontSize="20" 
+                           FontWeight="Bold"
+                           Foreground="Goldenrod"
+                           Padding="10"
+                           TextAlignment="Center"
+                           >
+                            <TextBlock.Background>
+                                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                    <GradientStop Color="Black" Offset="0"/>
+                                    <GradientStop Color="#FFCF2828" Offset="1"/>
+                                </LinearGradientBrush>
+                            </TextBlock.Background>
+                        </TextBlock>
+
+                        <TextBox x:Name="txt_emailaddress" 
+                         HorizontalAlignment="Left" 
+                         Height="46" 
+                         Margin="10,130,0,0" 
+                         TextWrapping="Wrap" 
+                         VerticalAlignment="Top" 
+                         Width="470" 
+                         BorderBrush="#FF272222" 
+                         Background="#FFFBFBFB"
+                         CaretBrush="Goldenrod" 
+                         SelectionBrush="Goldenrod" 
+                         FontSize="15"
+                         materialDesign:HintAssist.Hint="Email Address"/>
+
+                        <Button x:Name="btn_send" 
+                        Content="Send" 
+                        Margin="519,144,0,0" 
+                        VerticalAlignment="Top" Click="btn_send_Click" HorizontalAlignment="Left" Width="75"/>
+                    </Grid>
+                </materialDesign:Card>
+            </Grid>
+        </ScrollViewer>
+
+
+
+    </Grid>
+</Window>

@@ -1,0 +1,288 @@
+﻿<UserControl x:Class="LoginPage.UserAccountCreate_Admin_"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             xmlns:local="clr-namespace:LoginPage" xmlns:s="clr-namespace:System;assembly=mscorlib"
+             mc:Ignorable="d">
+
+    <Grid x:Name="grid_createPackage"
+          HorizontalAlignment="Center" 
+          VerticalAlignment="Top" Width="1860" Height="1011" Background="#FFFBFBFB">
+
+        <TextBlock 
+                   HorizontalAlignment="Center" 
+                   VerticalAlignment="Top"
+                    Padding="10"
+                   FontSize="20" 
+                   FontWeight="Bold" 
+                   TextDecorations="Underline" 
+                   Foreground="LightGray"
+                   TextAlignment="Center" 
+                   Background="#FF2D2D30" 
+                   Width="1860">
+            Create Account</TextBlock>
+
+        <materialDesign:Card
+            HorizontalAlignment="Center" 
+            VerticalAlignment="Center" 
+            materialDesign:ShadowAssist.Darken="True" 
+            Background="White" 
+            UniformCornerRadius="10" 
+            Opacity="0.9"
+            Padding="20">
+            <Grid x:Name="cus_reg"
+                  >
+                <ComboBox x:Name="cmb_empId"
+                          VerticalAlignment="Top"
+                          HorizontalAlignment="Left"
+                          VerticalContentAlignment="Center"
+                          HorizontalContentAlignment="Center"
+                          Margin="10,39,0,0" 
+                          Style="{StaticResource MaterialDesignFloatingHintComboBox}"
+                          materialDesign:ComboBoxAssist.ShowSelectedItem="True"
+                          materialDesign:ThemeAssist.Theme="Light"
+                          Width="240" Height="50" 
+                          materialDesign:HintAssist.Hint="Employee Id"
+                          Foreground="#FF2D2D30" 
+                          BorderBrush="#FF2D2D30" 
+                          Background="#FFFBFBFB" 
+                          FontSize="16" 
+                          DropDownOpened="cmb_empId_DropDownOpened"/>
+
+
+                <StackPanel x:Name="st_uname"
+                    HorizontalAlignment="Left"
+                    Height="30"  Width="350" Margin="10,127,0,353"
+                    
+                            >
+
+                    <materialDesign:PackIcon Kind="Error" 
+                        Foreground="Red" 
+                        Width="20" Height="20" 
+                        HorizontalAlignment="Left"/>
+
+                    <TextBlock x:Name="txt_error_uname"
+                        Width="325" Height="30"
+                        HorizontalAlignment="Right" 
+                        TextAlignment="Left" 
+                        Foreground="Red"
+                        Margin="10,-20,0,0" FontWeight="Bold" FontFamily="Segoe UI Semibold"/>
+                </StackPanel>
+
+
+                <TextBox x:Name="txt_uname" 
+                 Margin="10,160,460,302"
+                 materialDesign:HintAssist.Hint="Username" 
+                 Style="{StaticResource MaterialDesignFloatingHintTextBox}" 
+                 materialDesign:TextBlockAssist.AutoToolTip="True"
+                 Foreground="Black"
+                 BorderBrush="#FF272222" 
+                 CaretBrush="Goldenrod" 
+                 SelectionBrush="Goldenrod" 
+                 FontSize="15" 
+                 FontWeight="Normal" 
+                 MaxLength="30"
+                 KeyUp="txt_uname_KeyUp">
+                    <TextBox.Effect>
+                        <DropShadowEffect BlurRadius="5" ShadowDepth="3" Opacity="0.29"/>
+                    </TextBox.Effect>
+                </TextBox>
+
+                <StackPanel x:Name="st_empId"
+                    HorizontalAlignment="Left" 
+                    VerticalAlignment="Top"
+                    Height="30"  Width="350"
+                    Margin="10,9,0,0">
+
+                    <materialDesign:PackIcon Kind="Error" 
+                                     Foreground="Red" 
+                                     Width="20" Height="20" 
+                                     HorizontalAlignment="Left"/>
+
+                    <TextBlock x:Name="txt_error_empId"
+                     Width="325" Height="30"
+                     HorizontalAlignment="Right" 
+                     VerticalAlignment="Center"
+                     TextAlignment="Left" 
+                     Foreground="Red"
+                     Margin="10,-20,0,0" 
+                     FontWeight="Bold" 
+                     FontFamily="Segoe UI Semibold"/>
+                </StackPanel>
+
+                <PasswordBox x:Name="txt_password" 
+                    Margin="10,281,460,179"
+                    materialDesign:HintAssist.Hint="Password" 
+                    materialDesign:TextBlockAssist.AutoToolTip="True"
+                    Style="{StaticResource MaterialDesignFloatingHintPasswordBox}"
+                    BorderBrush="#FF272222" 
+                    Background="#FFFBFBFB"
+                    Foreground="Black"
+                    CaretBrush="Goldenrod" 
+                    SelectionBrush="Goldenrod" 
+                    FontSize="15" 
+                    FontWeight="Normal" 
+                    MaxLength="20" 
+                    Width="400" 
+                    KeyUp="txt_password_KeyUp">
+                    <PasswordBox.Effect>
+                        <DropShadowEffect BlurRadius="5" ShadowDepth="3" Opacity="0.29"/>
+                    </PasswordBox.Effect>
+                </PasswordBox>
+
+                <TextBox x:Name="txt_Passwordshow" 
+                    Margin="10,281,460,179"
+                    materialDesign:HintAssist.Hint="Password" 
+                    materialDesign:TextBlockAssist.AutoToolTip="True"
+                    Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                    Foreground="Black"
+                    BorderBrush="#FF272222" 
+                    Background="#FFFBFBFB"
+                    CaretBrush="Goldenrod" 
+                    SelectionBrush="Goldenrod" 
+                    FontSize="15" 
+                    FontWeight="Normal" 
+                    MaxLength="20"
+                    Width="400"
+                    Visibility="Hidden">
+                    <TextBox.Effect>
+                        <DropShadowEffect BlurRadius="5" ShadowDepth="3" Opacity="0.29"/>
+                    </TextBox.Effect>
+                </TextBox>
+
+                <ToggleButton x:Name="checkBox_showPass"
+                    HorizontalAlignment="Left" 
+                    Style="{StaticResource MaterialDesignActionLightToggleButton}"
+                    Margin="369,292,0,0" 
+                    VerticalAlignment="Top" 
+                    Width="30" Height="30"
+                    FontSize="14"
+                              Checked="checkBox_showPass_Checked"
+                              Unchecked="checkBox_showPass_Unchecked"
+                    >
+                    <materialDesign:PackIcon  Kind="HideOutline"/>
+
+                </ToggleButton>
+
+                <PasswordBox x:Name="txt_conPassword" 
+                    Margin="460,281,10,179"
+                    materialDesign:HintAssist.Hint="Confirm Password" 
+                    materialDesign:TextBlockAssist.AutoToolTip="True"
+                    Style="{StaticResource MaterialDesignFloatingHintPasswordBox}"
+                    Foreground="Black"
+                    BorderBrush="#FF272222" 
+                    Background="#FFFBFBFB"
+                    CaretBrush="Goldenrod" 
+                    SelectionBrush="Goldenrod" 
+                    FontSize="15" 
+                    FontWeight="Normal" MaxLength="20" Width="400" KeyUp="txt_conPassword_KeyUp" >
+                    <PasswordBox.Effect>
+                        <DropShadowEffect BlurRadius="5" ShadowDepth="3" Opacity="0.29"/>
+                    </PasswordBox.Effect>
+                </PasswordBox>
+
+                <TextBox x:Name="txt_conPasswordshow" 
+                    Margin="460,281,10,179"
+                    materialDesign:HintAssist.Hint="Confirm Password" 
+                    materialDesign:TextBlockAssist.AutoToolTip="True"
+                    Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                    Foreground="Black"
+                    BorderBrush="#FF272222" 
+                    Background="#FFFBFBFB"
+                    CaretBrush="Goldenrod" 
+                    SelectionBrush="Goldenrod" 
+                    FontSize="15" 
+                    FontWeight="Normal" 
+                    MaxLength="20"
+                    Width="400"
+                    Visibility="Hidden">
+                    <TextBox.Effect>
+                        <DropShadowEffect BlurRadius="5" ShadowDepth="3" Opacity="0.29"/>
+                    </TextBox.Effect>
+                </TextBox>
+
+                <ToggleButton x:Name="checkBox_showConPass"
+                    HorizontalAlignment="Left" 
+                    Style="{StaticResource MaterialDesignActionLightToggleButton}"
+                    Margin="820,292,0,0" 
+                    VerticalAlignment="Top" 
+                    Width="30" Height="30"
+                    FontSize="14"
+                              Checked="checkBox_showConPass_Checked"
+                              Unchecked="checkBox_showConPass_Unchecked"
+                    >
+                    <materialDesign:PackIcon  Kind="HideOutline"/>
+
+                </ToggleButton>
+
+                <StackPanel x:Name="st_password"
+                    HorizontalAlignment="Left" 
+                    VerticalAlignment="Top"
+                    Height="30"  Width="350"
+                    Margin="10,251,0,0">
+
+                    <materialDesign:PackIcon Kind="Error" 
+                        Foreground="Red" 
+                        Width="20" Height="20" 
+                        HorizontalAlignment="Left"/>
+
+                    <TextBlock x:Name="txt_error_password"
+                        Width="325" Height="30"
+                        HorizontalAlignment="Right" 
+                        VerticalAlignment="Center"
+                        TextAlignment="Left" 
+                        Foreground="Red"
+                        Margin="10,-20,0,0" FontWeight="Bold" FontFamily="Segoe UI Semibold"/>
+                </StackPanel>
+
+                <StackPanel x:Name="st_conPassword"
+                    HorizontalAlignment="Left" 
+                    VerticalAlignment="Top"
+                    Height="30"  Width="350"
+                    Margin="460,251,0,0">
+
+                    <materialDesign:PackIcon Kind="Error" 
+                        Foreground="Red" 
+                        Width="20" Height="20" 
+                        HorizontalAlignment="Left"/>
+
+                    <TextBlock x:Name="txt_error_conPassword"
+                        Width="325" Height="30"
+                        HorizontalAlignment="Right" 
+                        VerticalAlignment="Center"
+                        TextAlignment="Left" 
+                        Foreground="Red"
+                        Margin="10,-20,0,0" FontWeight="Bold" FontFamily="Segoe UI Semibold"/>
+                </StackPanel>
+
+                <CheckBox x:Name="checkBox_userType"
+                          Content="As an Admin" 
+                          HorizontalAlignment="Left" 
+                          Margin="460,367,0,103" 
+                          Width="120" Height="40" 
+                          Background="Red" 
+                          FontSize="14">
+                    <CheckBox.Resources>
+                        <SolidColorBrush x:Key="MaterialDesignCheckBoxOff"
+                                 Color="Black"/>
+                    </CheckBox.Resources>
+                </CheckBox>
+                <Button x:Name="btn_discard"
+                        Content="Discard"
+                        Margin="585,447,185,31" 
+                        Width="100" 
+                        materialDesign:ShadowAssist.Darken="True"
+                        Click="btn_discard_Click"/>
+
+                <Button x:Name="btn_save"
+                        Content="Save"
+                        Margin="741,447,29,31"
+                        Width="100" 
+                        materialDesign:ShadowAssist.Darken="True" Click="btn_save_Click"/>
+            </Grid>
+        </materialDesign:Card>
+
+    </Grid>
+</UserControl>
